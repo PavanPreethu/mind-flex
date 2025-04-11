@@ -1,0 +1,54 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MindFlex — Cognitive Rehab Suite</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🧠 MindFlex</h1>
+    <p id="greeting"></p>
+    <p>Helping stroke patients & elderly boost memory and focus through fun games!</p>
+    <nav>
+      <a href="games/memory.html">Memory Match</a>
+      <a href="games/reaction.html">Reaction Tester</a>
+      <a href="games/sequence.html">Sequence Recaller</a>
+      <a href="games/tracker.html">Progress Tracker</a>
+
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>🎯 Why MindFlex?</h2>
+      <p>Designed to improve memory, focus, and cognitive ability through fun and simple brain games.</p>
+    </section>
+
+    <section>
+      <h2>🎮 Try a Game</h2>
+      <ul>
+        <li><a href="games/memory.html">Memory Match</a></li>
+        <li><a href="games/reaction.html">Reaction Tester</a></li>
+        <li><a href="games/sequence.html">Sequence Recaller</a></li>
+      </ul>
+    </section>
+  </main>
+ 
+
+  <footer>
+    <p>© 2025 MindFlex</p>
+  </footer>
+  <script>
+    const name = localStorage.getItem("mindflexUser");
+    if (name) {
+      document.getElementById("greeting").textContent = "Welcome, " + name + " 👋";
+    } else {
+      window.location.href = "login.html"; // Force login if no user
+    }
+  </script>
+  
+</body>
+</html>

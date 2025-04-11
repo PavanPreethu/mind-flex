@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MindFlex — Progress Tracker</title>
+  <link rel="stylesheet" href="../style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      text-align: center;
+      padding: 40px;
+    }
+    canvas {
+      max-width: 600px;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>📊 Progress Tracker</h1>
+  <a href="../index.html">← Back to Home</a>
+
+  <h2>Reaction Time (ms)</h2>
+  <canvas id="reactionChart"></canvas>
+
+  <h2>Sequence Recaller (Levels)</h2>
+  <canvas id="sequenceChart"></canvas>
+
+  <script>
+    // Load stored scores from localStorage
+    const reactionTimes = JSON.parse(localStorage.getItem('reactionTimes') || '[]');
+    const sequenceScores = JSON.parse(localStorage.getItem('sequenceLevels') || '[]');
+
+    const labels = Array.from({ length: Math.max(reactionTimes.length, sequenceScores.length) }, (_, i) => "Session " + (i + 1));
+
+    // Reaction Time Chart
+    new Chart(document.getElementById("reactionChart"), {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [{
+          label: "Reaction Time (ms)",
+          data: reactionTimes,
+          borderColor: "red",
+          fill: false,
+          tension: 0.3
+        }]
+      }
+    });
+
+    // Sequence Recaller Chart
+    new Chart(document.getElementById("sequenceChart"), {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [{
+          label: "Sequence Recaller Level",
+          data: sequenceScores,
+          borderColor: "blue",
+          fill: false,
+          tension: 0.3
+        }]
+      }
+    });
+  </script>
+</body>
+</html>
